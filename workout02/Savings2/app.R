@@ -87,7 +87,7 @@ server <- function(input, output) {
   ### 4) Data into Data Frame
   
   
-  Balances <- function(amount, contrib, rate, growth, years) {
+  modalities <- function(amount, contrib, rate, growth, years) {
     
     modalities <- as.data.frame(matrix(c(0:years), nrow = years + 1, ncol = 4))
     
@@ -119,13 +119,13 @@ server <- function(input, output) {
     ##################################
     ## Shiny App Command 
     
-    Balances <- savings_df(input$amount, input$contrib, input$rate/100,
+    Balances <- modalities(input$amount, input$contrib, input$rate/100,
                            input$growth/100, input$years)
     
     
     
     
-    return(Balances[c(1,2,3,5)])
+    return(Balances)
     #return(Balances[c(1,2,3,5)])
     
   })
