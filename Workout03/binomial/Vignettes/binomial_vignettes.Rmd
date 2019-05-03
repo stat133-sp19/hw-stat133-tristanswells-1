@@ -1,0 +1,81 @@
+---
+title: "Binomial Vignettes"
+author: "Tristan Wells"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+library(binomial)
+```
+
+
+## Binomial Variable
+
+This package contains functions for calculating probabilities of a Binomial random variable, and related calculations such as the probability distribution, the expected value, variance, etc.
+
+## Identifying "trials", "prob", and "success"
+
+The first step is to identify the probability (prob), the number of trials (trials), and the number of successes (success).
+
+From here, you can calculate the binomial mean, mode, variance, skewness, and kurtosis using the "binomial" package as such:
+
+```{r}
+trials = 10
+prob = 0.3
+
+binmean <- bin_mean(trials, prob)
+binmean
+```
+
+note that the number of trials (trials) must be postive integers, 
+prob must be between 0 and 1, and success must be a positive integer less than or equal to trials.
+
+## Calculating the Binomial Distribution
+
+With the function "bin_distribution", you can create a list containing the binomial distribution of trials and probability
+
+```{r}
+bindis_list <- bin_distribution(trials, prob)
+bindis_list
+```
+
+## Calculating the cumulative binomial distribution
+
+with bin_cumulative, you can calulate the cumulative value of success given a probability and number of trials. 
+
+```{r}
+bincum <- bin_cumulative(trials, prob)
+bincum
+```
+
+
+## Binomial variable
+
+the bin_variable function will return a binomial random variable object, given a number of trials, and probability. It will provide statistics for each set of inputs. 
+
+
+## n choose k
+
+the bin_choose function will caculate the number of combinations in which k successes can occur in n trials.
+
+## Plots
+
+The functions plot.bincum and plot.binvar can provide plots of the list values given for bin_cumulative and bin_variable.
+```{r, fig.show = "hold"}
+bincum <- bin_cumulative(trials, prob)
+bincum
+plot(bincum)
+```
+
+
+> "He who gives up [code] safety for [code] speed deserves neither."
+([via](https://twitter.com/hadleywickham/status/504368538874703872))
