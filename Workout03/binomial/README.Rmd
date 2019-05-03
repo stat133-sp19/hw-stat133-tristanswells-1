@@ -27,9 +27,9 @@ This package was created and inspired by the impact it will have on my grade. Ad
 
 This package can be installed using the package "devtools" from github
 ```{r}
-#install.packages("devtools")
+install.packages("devtools")
 
-#devtools::install_github("tristanswells-1/binomial")
+devtools::install_github("tristanswells-1/binomial")
 ```
 
 ## Usage
